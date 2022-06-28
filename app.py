@@ -7,7 +7,7 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
-# api listening to POST requests and predicting sentiments
+# API escuchando a solicitudes POST y prediciendo sentimientos
 @app.route('/predict' , methods = ['POST'])
 def predict():
 
@@ -15,40 +15,40 @@ def predict():
     review = request.json.get('customer_review')
     if not review:
         response = {'status' : 'error',
-                    'message' : 'Empty Review'}
+                    'message' : 'Reseña vacía'}
     
     else:
 
-        # calling the predict method from prediction.py module
+        # Llamando al método predict del módulo prediction.py
         sentiment , path = prediction.predict(review)
         response = {'status' : 'success',
-                    'message' : 'Got it',
+                    'message' : 'Listo',
                     'sentiment' : sentiment,
                     'path' : path}
 
     return jsonify(response)
 
 
-# Creating an API to save the review, user clicks on the Save button
+# Creando una API para guardar la reseña cuando el usuario haga clic en el botón Guardar
 @app.route('/' , methods = [''])
 def save():
 
-    # extracting date , product name , review , sentiment associated from the JSOn data
+    # Extrayendo fecha, nombre del producto, reseña, sentimientos asociados desde los datos JSON
     date = request.json.get('')
     product = request.json.get('')
     review = request.json.get('')
     sentiment = request.json.get('')
 
-    # creating a final variable seperated by commas
+    # Creando una variable final separada por comas
     data_entry = date + "," + product + "," + review + "," + sentiment
 
-    # open the file in the 'append' mode
+    # Abrir el archivo en modo "append"
 
-    # Log the data in the file
+    # Registrar los datos en el archivo
 
-    # return a success message
+    # Regresar un mensaje de éxito
     return jsonify({'status' : 'success' , 
-                    'message' : 'Data Logged'})
+                    'message' : 'Datos registrados'})
 
 
 if __name__  ==  "__main__":
