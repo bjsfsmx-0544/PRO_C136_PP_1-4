@@ -116,7 +116,7 @@ $(document).ready(function(){
         product = 'Headphones'
     })
 
-    //  cVerificar si el botón Enviar debajo de "videojuegos" es presionado y obtener la reseña correspondiente
+    //  Verificar si el botón Enviar debajo de "videojuegos" es presionado y obtener la reseña correspondiente
     $('').click(function(){
 
         review = $('').val()
